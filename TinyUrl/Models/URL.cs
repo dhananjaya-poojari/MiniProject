@@ -1,19 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace TinyUrl.Models
 {
     public class URL
     {
-        [Key]
-        public int Id { get; set; }
-        public string Original { get; set; }
-        public string EncodedHash { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [BsonElement("original")]
+        public string Original { get; set; }
+
+        [BsonElement("encodedHash")]
+        public string EncodedHash { get; set; }
     }
 }

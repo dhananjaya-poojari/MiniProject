@@ -1,25 +1,28 @@
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using TinyUrl.Data;
 using TinyUrl.Service;
 using TinyUrl.Service.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<AppDBContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection(nameof(MongoDBSettings)));
+builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(s.GetRequiredService<IOptions<MongoDBSettings>>().Value.ConnectionString));
+
+// Add services to the container.
+builder.Services.AddSingleton<MongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
 builder.Services.AddScoped<ITinyService, TinyService>();
 
-
-//builder.Services.AddHostedService<DeleteExpiredData>();
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 
@@ -39,21 +42,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-ApplyMigration();
-
-app.Use(async (context, next) =>
+try
 {
-    await next();
-});
+    var mongoClient = app.Services.GetRequiredService<IMongoClient>();
+    var result = mongoClient.GetDatabase("UrlShortner").RunCommand<BsonDocument>(new BsonDocument("ping", 1));
+    Console.WriteLine("Pinged your deployment. You successfully connected to MongoDB!");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex);
+}
 
 app.Run();
-
-void ApplyMigration()
-{
-    using var scope = app.Services.CreateScope();
-    var _db = scope.ServiceProvider.GetRequiredService<AppDBContext>();
-    if (_db.Database.GetPendingMigrations().Count() > 0)
-    {
-        _db.Database.Migrate();
-    }
-}

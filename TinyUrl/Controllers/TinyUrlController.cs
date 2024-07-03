@@ -16,31 +16,34 @@ namespace TinyUrl.Controllers
         }
 
         [HttpGet("{hash}")]
-        public async Task<IActionResult> Get(string hash)
+        public IActionResult Get(string hash)
         {
-            var url = await _service.GetShortUrl(HttpContext, hash);
+            var url = _service.GetShortUrl(HttpContext, hash);
             if (string.IsNullOrEmpty(url)) { return NotFound(); }
             return Redirect(url);
         }
 
         [HttpGet("all")]
-        public async Task<IEnumerable<ResponseDTO>> GetAll([FromHeader(Name = "apiKey")][Required] string requiredHeader)
+        public IEnumerable<ResponseDTO> GetAll([FromHeader(Name = "apiKey")][Required] string requiredHeader)
         {
-            return await _service.GetAll(HttpContext, requiredHeader);
+            return _service.GetAll(HttpContext, requiredHeader);
         }
 
         [HttpPost]
-        public async Task<string> Post([FromHeader(Name = "apiKey")][Required] string requiredHeader, [FromBody] RequestDTO requestDTO)
+        public string Post([FromHeader(Name = "apiKey")][Required] string requiredHeader, [FromBody] RequestDTO requestDTO)
         {
-            string responseDTO = await _service.CreateShortUrl(HttpContext, requiredHeader, requestDTO);
+            string responseDTO = _service.CreateShortUrl(HttpContext, requiredHeader, requestDTO);
             return responseDTO;
         }
 
         [HttpPost("apiKey")]
-        public async Task<string> CreateNewApiKey([FromBody] string name)
+        public string CreateNewApiKey([FromBody] UserDTO userDTO)
         {
-            string res = await _service.CreateNewApiKey(name);
+            string res = _service.CreateNewApiKey(userDTO.Email);
             return res;
         }
     }
+
+    public record UserDTO(string Email);
+
 }

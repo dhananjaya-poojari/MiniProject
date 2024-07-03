@@ -1,11 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace TinyUrl.Models
 {
     public class User
     {
-        [Key]
-        public int Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+        [BsonElement("emailId")]
+        public string EmailId { get; set; }
+
+        [BsonElement("apiKey")]
         public string APIKey { get; set; }
     }
 }
