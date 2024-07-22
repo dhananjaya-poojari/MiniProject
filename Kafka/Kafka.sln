@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka.CreateTopic", "Kafka.CreateTopic\Kafka.CreateTopic.csproj", "{EC5D38F8-C5F8-404C-9BBE-ACD86C7CEEBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON", "JSON", "{A5949210-E25B-4092-8499-E75C15749E0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Avro", "Avro", "{2B423F24-466F-45F5-9030-76B40401F78D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka.Producer", "JSON\Kafka.Producer\Kafka.Producer.csproj", "{FDFB23BF-20E7-4606-BC25-F40F959FE2D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka.Shared", "JSON\Kafka.Shared\Kafka.Shared.csproj", "{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka.Consumer", "JSON\Kafka.Reciever\Kafka.Consumer.csproj", "{1D44DB00-6845-487D-A0DE-ADFF2D496E60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeOff.Employee", "Avro\TimeOff.Employee\TimeOff.Employee.csproj", "{75FA8EF6-9D34-4403-9920-79CA332453E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeOff.Models", "Avro\TimeOff.Models\TimeOff.Models.csproj", "{4ABA1508-1194-46F7-A6DA-9A505A0519B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5D38F8-C5F8-404C-9BBE-ACD86C7CEEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5D38F8-C5F8-404C-9BBE-ACD86C7CEEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5D38F8-C5F8-404C-9BBE-ACD86C7CEEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5D38F8-C5F8-404C-9BBE-ACD86C7CEEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDFB23BF-20E7-4606-BC25-F40F959FE2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFB23BF-20E7-4606-BC25-F40F959FE2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFB23BF-20E7-4606-BC25-F40F959FE2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFB23BF-20E7-4606-BC25-F40F959FE2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D44DB00-6845-487D-A0DE-ADFF2D496E60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D44DB00-6845-487D-A0DE-ADFF2D496E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D44DB00-6845-487D-A0DE-ADFF2D496E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D44DB00-6845-487D-A0DE-ADFF2D496E60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FA8EF6-9D34-4403-9920-79CA332453E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FA8EF6-9D34-4403-9920-79CA332453E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FA8EF6-9D34-4403-9920-79CA332453E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FA8EF6-9D34-4403-9920-79CA332453E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ABA1508-1194-46F7-A6DA-9A505A0519B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABA1508-1194-46F7-A6DA-9A505A0519B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABA1508-1194-46F7-A6DA-9A505A0519B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABA1508-1194-46F7-A6DA-9A505A0519B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDFB23BF-20E7-4606-BC25-F40F959FE2D3} = {A5949210-E25B-4092-8499-E75C15749E0C}
+		{4AA236D3-B17D-43C5-9DD7-BC9DDB588DAF} = {A5949210-E25B-4092-8499-E75C15749E0C}
+		{1D44DB00-6845-487D-A0DE-ADFF2D496E60} = {A5949210-E25B-4092-8499-E75C15749E0C}
+		{75FA8EF6-9D34-4403-9920-79CA332453E2} = {2B423F24-466F-45F5-9030-76B40401F78D}
+		{4ABA1508-1194-46F7-A6DA-9A505A0519B2} = {2B423F24-466F-45F5-9030-76B40401F78D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4B1F3F9-ADCB-4780-93F6-0A0E5DFD135E}
+	EndGlobalSection
+EndGlobal
